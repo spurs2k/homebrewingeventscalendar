@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div th:replace="fragments :: messages"></div>
+
+<main class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a th:href="@{/events/create}" class="btn btn-success">Create Event</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                <tr>
+                    <th>Date</th>
+                    <th>Event</th>
+                    <th>Location</th>
+                    <th>Registration Deadline</th>
+                    <th>Registration Link</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="event : ${events}">
+                    <td th:text="${{event.startDate}}"></td>
+                    <td><a th:href="@{${'/events/detail/'+event.uid}}" th:text="${event.title}"></a></td>
+                    <td><a th:text="${{event.location}}"></a></td>
+                    <td><a th:text="${{event.registrationDeadline}}"></a></td>
+                    <td><a th:text="${{event.registrationLink}}"></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</main>
+
+<div th:insert="fragments :: scripts"></div>
+
+</body>
+</html>
