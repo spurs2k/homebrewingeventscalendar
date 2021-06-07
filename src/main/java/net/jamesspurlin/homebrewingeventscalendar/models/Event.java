@@ -3,7 +3,6 @@ package net.jamesspurlin.homebrewingeventscalendar.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,46 +15,30 @@ public class Event extends AbstractEntity {
     private static final SimpleDateFormat SIMPLE_DATE_FORMAT
             = new SimpleDateFormat(START_DATE_FORMAT_PATTERN);
 
-    @NotNull(message = "Please enter a valid date")
+    @NotNull
     @DateTimeFormat(pattern = START_DATE_FORMAT_PATTERN)
     private Date startDate;
 
-    @NotBlank(message = "Title of event is required")
+    @NotNull
     private String title;
 
-    @NotBlank(message = "Location is required. Please enter city and state")
+    @NotNull
     private String location;
 
-    @NotNull(message = "Please enter a valid date")
+    @NotNull
     @DateTimeFormat(pattern = START_DATE_FORMAT_PATTERN)
     private Date registrationDeadline;
 
-    @NotBlank(message = "Please enter the registration link for the event.")
+    @NotNull
     private String registrationLink;
 
     public Event() {}
 
     public Event(@NotNull Date startDate,
-                 @NotBlank String title,
-                 @NotBlank String location,
+                 @NotNull String title,
+                 @NotNull String location,
                  @NotNull Date registrationDeadline,
-                 @NotBlank String registrationLink) {
-
-        if (startDate == null)
-            throw new IllegalArgumentException("Start date may not be null");
-
-        if (title == null || title.length() == 0)
-            throw new IllegalArgumentException("Title may not be blank");
-
-        if (location == null || location.length() == 0)
-            throw new IllegalArgumentException("Location may not be blank");
-
-        if (registrationDeadline == null)
-            throw new IllegalArgumentException("Registration deadline date may not be null");
-
-        if (registrationLink == null || registrationLink.length() == 0)
-            throw new IllegalArgumentException("Registration link may not be blank");
-
+                 @NotNull String registrationLink) {
 
         this.startDate = startDate;
         this.title = title;
