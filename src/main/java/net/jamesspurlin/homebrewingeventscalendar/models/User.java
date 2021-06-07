@@ -2,6 +2,7 @@ package net.jamesspurlin.homebrewingeventscalendar.models;
 
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.regex.Pattern;
 @Entity
 public class User extends AbstractEntity {
 
-    @NotBlank
+    @Email(message="Must enter a valid email address")
     private String email;
 
     @NotBlank
@@ -27,7 +28,7 @@ public class User extends AbstractEntity {
 
     public User() {}
 
-    public User(@NotBlank String email, @NotBlank String fullName, @NotBlank String password) {
+    public User(@Email String email, @NotBlank String fullName, @NotBlank String password) {
 
         if (email == null || email.length() == 0 || !isValidEmail(email))
             throw new IllegalArgumentException("Email may not be blank");

@@ -15,3 +15,16 @@ main.container-fluid {
     text-decoration: none !important;
 }
 
+.navbar {
+    background-image: url('images/bubbles.jpg');
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold !important;
+}
