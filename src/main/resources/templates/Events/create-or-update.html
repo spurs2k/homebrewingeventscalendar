@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <label th:for="registrationLink">Registration Link</label>
-                    <input th:errorclass="is-invalid" class="form-control" th:field="*{registrationLink}" required="required"></textarea>
+                    <input th:errorclass="is-invalid" class="form-control" th:field="*{registrationLink}" required="required">
                     <div class="invalid-feedback" th:errors="*{registrationLink}"></div>
                 </div>
                 <input type="submit" value="Save" class="btn btn-primary" />

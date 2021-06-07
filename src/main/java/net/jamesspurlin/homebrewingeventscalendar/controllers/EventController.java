@@ -25,7 +25,7 @@ public class EventController extends AbstractBaseController {
     public String listEvents(Model model) {
         List<Event> allEvents = eventRepository.findAll();
         model.addAttribute("events", allEvents);
-        return "events/list";
+        return "Events/list";
     }
 
     @GetMapping(value = "create")
@@ -33,7 +33,7 @@ public class EventController extends AbstractBaseController {
         model.addAttribute(new Event());
         model.addAttribute("actionUrl", request.getRequestURI());
         model.addAttribute("title", "Create Event");
-        return "events/create-or-update";
+        return "Events/create-or-update";
     }
 
     @PostMapping(value = "create")
@@ -41,7 +41,7 @@ public class EventController extends AbstractBaseController {
                                          Errors errors) {
 
         if (errors.hasErrors())
-            return "events/create-or-update";
+            return "Events/create-or-update";
 
         eventRepository.save(event);
 
@@ -61,7 +61,7 @@ public class EventController extends AbstractBaseController {
             model.addAttribute(MESSAGE_KEY, "warning|No event found with id: " + Integer.toString(uid));
         }
 
-        return "events/details";
+        return "Events/details";
     }
 
     @GetMapping(value = "update/{uid}")
@@ -77,7 +77,7 @@ public class EventController extends AbstractBaseController {
             model.addAttribute(MESSAGE_KEY, "warning|No event found with id: " + Integer.toString(uid));
         }
 
-        return "events/create-or-update";
+        return "Events/create-or-update";
     }
 
     @PostMapping(value = "update/{uid}")

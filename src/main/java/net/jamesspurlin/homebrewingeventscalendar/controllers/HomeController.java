@@ -19,6 +19,6 @@ public class HomeController {
     public String index(Model model) {
         List<Event> allEvents = eventRepository.findAll();
         model.addAttribute("events", allEvents);
-        return "events/list";
+        return "Events/list";
     }
 }

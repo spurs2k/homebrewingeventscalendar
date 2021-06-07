@@ -30,10 +30,10 @@
                 <tbody>
                 <tr th:each="event : ${events}">
                     <td th:text="${{event.startDate}}"></td>
-                    <td><a th:href="@{${'/events/detail/'+event.uid}}" th:text="${event.title}"></a></td>
-                    <td><a th:text="${{event.location}}"></a></td>
+                    <td><a th:href="@{${'/events/detail/'+event.uid}}" th:text="${event.title}" style="color: cyan;"></a></td>
+                    <td><a th:text="${event.location}"></a></td>
                     <td><a th:text="${{event.registrationDeadline}}"></a></td>
-                    <td><a th:text="${{event.registrationLink}}"></a></td>
+                    <td><a th:href="@{${registrationLink}}" target="_new" th:text="${{event.registrationLink}}" style="color: cyan;"></a></td>
                 </tr>
                 </tbody>
             </table>
