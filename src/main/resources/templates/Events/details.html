@@ -38,13 +38,13 @@
     </div>
 
     <div class="row">
-        <div class="col-1">
-            <a class="btn btn-primary" th:href="@{${'/events/update/'+event.uid}}">
-                <i class="fas fa-edit"></i> Edit</a>
-        </div>
+        <form th:action="@{${'/events/update/'+event.uid}}" class="col text-left">
+            <button class="btn btn-primary"><i class="fas fa-edit"> Edit</i></button>
+        </form>
+
         <form th:action="@{${'/events/delete/'+event.uid}}" class="col text-right" method="post">
             <button class="btn btn-danger">
-                <i class="fas fa-edit"></i> Delete</button>
+                <i class="fas fa-trash"></i> Delete</button>
         </form>
     </div>
 
