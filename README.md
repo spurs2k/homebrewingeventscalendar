@@ -16,5 +16,5 @@ Users will also be able to sort events by date, location, and by category (wheth
 
 ## Technologies
 
--Java -HTML/CSS -Springboot -Hibernate -Thymleaf -JavaScript -MySQL
+Java | HTML/CSS | Springboot | Bootstrap | Hibernate | Thymleaf | JQuery | MySQL
 
