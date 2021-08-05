@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,10 +25,10 @@ public class EventController extends AbstractBaseController {
     @GetMapping
     public String listEvents(Model model) {
         Sort sort = Sort.by("startDate").descending();
-               // List<Event> allEvents = eventRepository.findAll(sort);
-        LocalDate date = LocalDate.now();
-        LocalDate yesterday = date.minusDays(1);
-        List<Event> allEvents = eventRepository.findAllWithStartDateAfter(yesterday, sort);
+        List<Event> allEvents = eventRepository.findAll(sort);
+        //LocalDate date = LocalDate.now();
+       // LocalDate yesterday = date.minusDays(1);
+        //List<Event> allEvents = eventRepository.findAllWithStartDateAfter(yesterday, sort);
         model.addAttribute("events", allEvents);
         return "Events/list";
     }
