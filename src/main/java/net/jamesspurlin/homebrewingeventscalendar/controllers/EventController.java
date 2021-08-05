@@ -3,6 +3,7 @@ package net.jamesspurlin.homebrewingeventscalendar.controllers;
 import net.jamesspurlin.homebrewingeventscalendar.models.Event;
 import net.jamesspurlin.homebrewingeventscalendar.repositories.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +25,11 @@ public class EventController extends AbstractBaseController {
 
     @GetMapping
     public String listEvents(Model model) {
-        List<Event> allEvents = eventRepository.findAll();
+        Sort sort = Sort.by("startDate").descending();
+               // List<Event> allEvents = eventRepository.findAll(sort);
+        LocalDate date = LocalDate.now();
+        LocalDate yesterday = date.minusDays(1);
+        List<Event> allEvents = eventRepository.findAllWithStartDateAfter(yesterday, sort);
         model.addAttribute("events", allEvents);
         return "Events/list";
     }

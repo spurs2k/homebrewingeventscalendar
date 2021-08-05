@@ -3,6 +3,8 @@ package net.jamesspurlin.homebrewingeventscalendar.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +19,9 @@ public class Event extends AbstractEntity {
 
     @NotNull
     @DateTimeFormat(pattern = START_DATE_FORMAT_PATTERN)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;
+
 
     @NotNull
     private String title;
