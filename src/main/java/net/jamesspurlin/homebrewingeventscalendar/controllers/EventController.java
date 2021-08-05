@@ -24,7 +24,7 @@ public class EventController extends AbstractBaseController {
 
     @GetMapping
     public String listEvents(Model model) {
-        Sort sort = Sort.by("startDate").descending();
+        Sort sort = Sort.by("startDate").ascending();
         List<Event> allEvents = eventRepository.findAll(sort);
         //LocalDate date = LocalDate.now();
        // LocalDate yesterday = date.minusDays(1);
